@@ -33,7 +33,7 @@
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="global.html#draw">draw</a></li><li><a href="global.html#drawBall">drawBall</a></li><li><a href="global.html#drawBricks">drawBricks</a></li><li><a href="global.html#drawGameOver">drawGameOver</a></li><li><a href="global.html#drawPad">drawPad</a></li><li><a href="global.html#drawScore">drawScore</a></li><li><a href="global.html#getAfterContent">getAfterContent</a></li><li><a href="global.html#howStringWidthPX">howStringWidthPX</a></li><li><a href="global.html#whereWasCollision">whereWasCollision</a></li>
+					<li><a href="global.html#addToDo">addToDo</a></li><li><a href="global.html#displayNewToDoIntoList">displayNewToDoIntoList</a></li><li><a href="global.html#getAfterContent">getAfterContent</a></li>
 				</ul>
 			</li>
 			
@@ -146,7 +146,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="draw"><span class="type-signature"></span>draw()</h4>
+    <h4 class="name" id="addToDo"><span class="type-signature"></span>addToDo(event)</h4>
     
     
 </dt>
@@ -154,7 +154,15 @@
 
     
     <div class="description">
-        <p>Перерисовывает игровой экран за каждый свой вызов</p>
+        <p>Обрабатывает ввод задачи</p>
+<ul>
+<li>@deprecated <pre>
+Создает объект с новой задачей:
+todo: 		  'текст новой задачи',
+checked: 	0/1 выполнено,
+important: 0/1 важное</li>
+</ul>
+</pre>
     </div>
     
 
@@ -164,92 +172,55 @@
 
     
     
+        <h5>Parameters:</h5>
+        
 
-    
-<dl class="details">
-    
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-	<dt class="important tag-deprecated method-doc-label method-doc-details-label">Deprecated:</dt>
-	
-    <dd>
-        <ul class="dummy">
-            <li><pre>Проверяет всю логику движения объектов на игровом поле:- Смещение мячика за кадр- Отскок от краев экрана- Отскок от ракетки- Отскок от кирпичей и их убийство- Победу, поражение- Движение ракетки</pre></li>
-        </ul>
-    </dd>
-    
-    
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
+        <th>Type</th>
 
         
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
             
-<hr>
-<dt>
-    <h4 class="name" id="drawBall"><span class="type-signature"></span>drawBall()</h4>
-    
-    
-</dt>
-<dd>
+                <td class="name"><code>event</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>событие</p></td>
+        </tr>
 
     
-    <div class="description">
-        <p>Рисует мячик</p>
-    </div>
-    
+    </tbody>
+</table>
 
-    
-
-    
-
-    
     
 
     
@@ -311,7 +282,7 @@
             
 <hr>
 <dt>
-    <h4 class="name" id="drawBricks"><span class="type-signature"></span>drawBricks()</h4>
+    <h4 class="name" id="displayNewToDoIntoList"><span class="type-signature"></span>displayNewToDoIntoList(arr)</h4>
     
     
 </dt>
@@ -319,7 +290,7 @@
 
     
     <div class="description">
-        <p>Рисует кирпичи</p>
+        <p>Выводит на экран содержимое массива</p>
     </div>
     
 
@@ -329,257 +300,55 @@
 
     
     
+        <h5>Parameters:</h5>
+        
 
-    
-<dl class="details">
-    
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
 
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-	<dt class="important tag-deprecated method-doc-label method-doc-details-label">Deprecated:</dt>
-	
-    <dd>
-        <ul class="dummy">
-            <li><pre>Заполняет живыми кирпичами массив (поле для кирпичей)</pre></li>
-        </ul>
-    </dd>
-    
-    
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
+        <th>Type</th>
 
         
-            
-<hr>
-<dt>
-    <h4 class="name" id="drawGameOver"><span class="type-signature"></span>drawGameOver()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Рисует надпись об окончании игры</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-	<dt class="important tag-deprecated method-doc-label method-doc-details-label">Deprecated:</dt>
-	
-    <dd>
-        <ul class="dummy">
-            <li><pre>В случае победы надпись - 'You win!'В случае проигрыша надпись - 'Game over'</pre></li>
-        </ul>
-    </dd>
-    
-    
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
 
         
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
             
-<hr>
-<dt>
-    <h4 class="name" id="drawPad"><span class="type-signature"></span>drawPad()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Рисует ракетку</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
-        
+                <td class="name"><code>arr</code></td>
             
-<hr>
-<dt>
-    <h4 class="name" id="drawScore"><span class="type-signature"></span>drawScore()</h4>
-    
-    
-</dt>
-<dd>
+
+            <td class="type">
+            
+                
+<span class="param-type">arrange</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>массив содержащий объекты с заданиями и их состоянием</p></td>
+        </tr>
 
     
-    <div class="description">
-        <p>Выводит количество набранных очков</p>
-    </div>
-    
+    </tbody>
+</table>
 
-    
-
-    
-
-    
     
 
     
@@ -800,274 +569,6 @@
     
 </dd>
 
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="howStringWidthPX"><span class="type-signature"></span>howStringWidthPX(string, fontSize)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Позволяет узнать длину строки в пикселях</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>string</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>некая строка</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>fontSize</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">number</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>размер шрифта</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-	<dt class="important tag-deprecated method-doc-label method-doc-details-label">Deprecated:</dt>
-	
-    <dd>
-        <ul class="dummy">
-            <li><pre>Данная функция работает только с конкретным моноширинным шрифтом"Pixel Emulator"</pre></li>
-        </ul>
-    </dd>
-    
-    
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">number</span>
-
-
-
-    </dd>
-</dl>
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="whereWasCollision"><span class="type-signature"></span>whereWasCollision()</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Отпределяет столкновения мячика с кирпичами</p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-	<dt class="important tag-deprecated method-doc-label method-doc-details-label">Deprecated:</dt>
-	
-    <dd>
-        <ul class="dummy">
-            <li><pre>Если столкновение с кирпичом произошло, он помечается как неживой.</pre></li>
-        </ul>
-    </dd>
-    
-    
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dd>
-
         </dl>
     
 
@@ -1118,7 +619,7 @@
 <span class="jsdoc-message">
 	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
 	
-		on December 22nd 2019, 11:00:35 am
+		on December 23rd 2019, 2:50:51 pm
 	
 	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
 </span>
