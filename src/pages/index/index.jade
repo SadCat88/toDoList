@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    title ToDoList
+  body
+    header.header
+      .wrapper
+        h1.header__heading ToDoList
+    main.main
+      .wrapper
+        .todo-panel
+          form.todo-task(action="")
+            label.todo-task__label.panel(for="task") Введите задачу:
+            input.todo-task__input.panel(type="text" id="task" placeholder = "Описание задачи")
+            button.todo-task__button Добавить задачу
+          ul.todo-list
+            li.todo-list__item test
+    footer.footer

@@ -1,0 +1,16 @@
+// для трюков, временных и вспомогательных стилей
+
+// Основная обертка для всех страниц
+.wrapper {
+    position: relative;
+    max-width: 330px;
+    margin: 0 auto;
+}
+
+// Рамка не участвует в блочной модели
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+

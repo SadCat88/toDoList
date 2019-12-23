@@ -1,0 +1,105 @@
+@import '../../assets/scss/utils/vars.scss';
+@import '../../assets/scss/utils/fonts.scss';
+
+.header {
+    height: 10vh;
+
+    background-color: $pageSecondBgColor;
+    box-shadow: 0px 0px 10px 15px $pageSecondBgColor;
+
+    .header__heading {
+        text-align: center;
+        line-height: 10vh;
+
+    }
+}
+
+.main {
+    min-height: 80vh;
+    padding-top: 50px;
+
+    .todo-panel {
+        padding: 15px;
+
+        background-color: $pageSecondBgColor;
+        box-shadow: 0px 0px 10px 15px $pageSecondBgColor;
+    }
+
+    .todo-task {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 30px;
+
+        .todo-task__label {
+            // margin-bottom: 20px;
+            padding-left: 20px;
+            height: 40px;
+
+            font-size: 20px;
+            line-height: 40px;
+            color: $mainText;
+        }
+
+        .todo-task__input {
+            margin-bottom: 0;
+            margin-top: -10px;
+            // margin-left: -15px;
+            // margin-right: -15px;
+            padding: 0 20px;
+            height: 70px;
+
+            font-size: 20px;
+            line-height: 40px;
+            color: $mainText;
+
+            background-color: $pageBgColor;
+            box-shadow:
+                inset 0px 0px 0px 2px $pageSecondBgColor,
+                inset 0px 0px 5px 10px $pageSecondBgColor;
+            border: none;
+            border-radius: 5px;
+
+            &::placeholder {
+                color: transparentize($mainText, 0.6);
+
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .todo-task__button {
+            padding: 0 20px;
+            height: 70px;
+
+            font-size: 20px;
+            line-height: 40px;
+            color: $mainText;
+
+            border: none;
+            border-radius: 5px;
+            background-color: darken($pageSecondBgColor, 10);
+            box-shadow: inset 0px 0px 5px 10px $pageSecondBgColor;
+
+            &:hover {
+                cursor: pointer;
+                background-color: darken($pageSecondBgColor, 15);
+                box-shadow: inset 0px 0px 5px 10px $pageSecondBgColor;
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
+    .todo-list {}
+}
+
+.footer {
+    height: 10vh;
+
+    background-color: $pageSecondBgColor;
+    box-shadow: 0px 0px 10px 15px $pageSecondBgColor;
+}
