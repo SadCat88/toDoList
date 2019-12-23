@@ -24,16 +24,16 @@ let $toDoList = document.querySelector('.todo-list');
 let taskList = [];
 
 $toDoButton.addEventListener('click', addToDo);
+// слушает событие - клик по кнопке
 
 /**
  * Обрабатывает ввод задачи
  *
- * * @deprecated <pre>
+ * @deprecated <pre>
  * Создает объект с новой задачей:
  * todo: 		  'текст новой задачи',
  * checked: 	0/1 выполнено,
  * important: 0/1 важное
- *
  * </pre>
  * @param {object} event - событие
  */
@@ -69,11 +69,52 @@ function displayNewToDoIntoList(arr) {
     // создать новый элемент
     $task.className = 'todo-list__item';
     // установить для нового элемента класс
-    $task.setAttribute('id', `task_${i}`);
-    // установить для нового элемента атрибут id
-    $task.innerHTML = arr[i].todo;
-    // добавить новому элементу содержание
+
+    let checked = '';
+    if (arr[i].checked == true) {
+      checked = 'checked';
+    }
+
+    //=== добавить новому элементу содержание
+    $task.innerHTML = `
+      <input class="todo-list__item-input" type="checkbox" data-id="${i}" id="task_${i}" ${checked}>
+      <label class="todo-list__item-label" for="task_${i}">${arr[i].todo}</label>
+    `;
+
     $toDoList.append($task);
     // добавить новый элемент последним дочерним элементом в список
+  }
+}
+
+document.onclick = whereClick;
+// событие клика по документу
+
+/**
+ * Определяет где был клик
+ * @deprecated <pre>
+ * Логика:
+ * - Был ли клик на чекбоксе;
+ * - Была снята или поставлена галочка;
+ * - Если галочка поставлена, записать в массив с задачами в нужный объект 
+ * свойство checked = true;
+ * </pre>
+ * @param {object} event - событие
+ */
+function whereClick(event) {
+  let target = event.target;
+  // цель события
+  if (target.classList.contains('todo-list__item-input')) {
+    // если цель события - input  с нужным классом
+    let id = target.dataset.id;
+    // считаем атрибут data-id
+    if (target.checked) {
+      // если чекбокс в состоянии отмечен
+      taskList[id].checked = true;
+      // изменить в массиве задач для нужной задачи свойство checked = true
+    } else {
+      // иначе
+      taskList[id].checked = false;
+      // изменить в массиве задач для нужной задачи свойство checked = false
+    }
   }
 }

@@ -16,6 +16,11 @@ html(lang="ru")
             label.todo-task__label(for="task") Введите задачу:
             input.todo-task__input(type="text" id="task" placeholder = "Описание задачи")
             button.todo-task__button Добавить задачу
+          p.todo-heading
+            b Список заданий:
           ul.todo-list
-            li.todo-list__item test
+            li.todo-list__item
+              input.todo-list__item-input(type="checkbox" data-id="0" checked)#task_X
+              label.todo-list__item-label(for="task_X").
+                test task
     footer.footer
