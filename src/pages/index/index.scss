@@ -30,8 +30,8 @@
         flex-direction: column;
         margin-bottom: 30px;
 
-        .todo-task__label {
-            padding-left: 20px;
+        .todo-add-task__label {
+            padding-left: 14px;
             height: 40px;
 
             font-size: 20px;
@@ -39,7 +39,7 @@
             color: $mainText;
         }
 
-        .todo-task__input {
+        .todo-add-task__input {
             margin-bottom: 0;
             margin-top: -10px;
             padding: 0 20px;
@@ -66,7 +66,7 @@
             }
         }
 
-        .todo-task__button {
+        .todo-add-task__button {
             padding: 0 20px;
             height: 70px;
 

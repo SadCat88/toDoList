@@ -17,8 +17,8 @@ import { getAfterContent } from '../../assets/js/getAfterContent.js';
 // =============================================================================
 ('use strict');
 
-let $toDoInput = document.querySelector('.todo-task__input');
-let $toDoButton = document.querySelector('.todo-task__button');
+let $toDoInput = document.querySelector('.todo-add-task__input');
+let $toDoButton = document.querySelector('.todo-add-task__button');
 let $toDoList = document.querySelector('.todo-list');
 
 let taskList = [];
@@ -41,18 +41,64 @@ function addToDo(event) {
   event.preventDefault();
   // отмена действия по умолчанию
 
-  // === новое задание
-  let newToDo = {
-    todo: $toDoInput.value,
-    checked: false,
-    important: false
-  };
+  let inputText = $toDoInput.value;
+  // введенное пользователем значение
+  let inputLabel = document.querySelector('.todo-add-task__label');
+  // подсказка для ввода
+  let taskExist = isExist(taskList, inputText);
+  // такая задача уже существует?
 
-  taskList.push(newToDo);
-  // добавить новое задание в массив заданий
-  displayNewToDoIntoList(taskList);
-  // вывести новое задание на экран
+  if (taskExist == true) {
+    inputLabel.innerHTML = 'Такая задача уже существует';
+    // вывод подсказки
+  }
+
+  if (inputText == '') {
+    inputLabel.innerHTML = 'Вы ввели пустое значение';
+    // вывод подсказки
+  }
+
+  // === добавляем только не пустое задание
+  if (inputText != '' && taskExist != true) {
+    // === новое задание
+    let newToDo = {
+      todo: $toDoInput.value,
+      checked: false,
+      important: false
+    };
+
+    inputLabel.innerHTML = 'Введите еще одну задачу:';
+    // вывод подсказки
+
+    taskList.push(newToDo);
+    // добавить новое задание в массив заданий
+    displayNewToDoIntoList(taskList);
+    // вывести новое задание на экран}
+  }
 }
+
+/**
+ * Проверяет имеется ли такой же объект в массиве
+ *
+ * @deprecated <pre>
+ * Перебирает массив объектов и проверяет, существует ли уже объект с таким же
+ * значением в одном из свойств.
+ * </pre>
+ * @param {arrange} arr - массив с объектами
+ * @param {string} str - строка для проверки
+ * @returns {boolean}
+ */
+const isExist = (arr, str) => {
+  let exist = false;
+  // === перебор всего массива
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].todo == str) {
+      // проверка - имеется ли в одном из объектов свойство с таким же значением
+      exist = true;
+    }
+  }
+  return exist;
+};
 
 /**
  * Выводит на экран содержимое массива
@@ -72,6 +118,7 @@ function displayNewToDoIntoList(arr) {
 
     let checked = '';
     if (arr[i].checked == true) {
+      // если в массиве состояние checked: true, то в DOM нарисовать галочку
       checked = 'checked';
     }
 
@@ -95,7 +142,7 @@ document.onclick = whereClick;
  * Логика:
  * - Был ли клик на чекбоксе;
  * - Была снята или поставлена галочка;
- * - Если галочка поставлена, записать в массив с задачами в нужный объект 
+ * - Если галочка поставлена, записать в массив с задачами в нужный объект
  * свойство checked = true;
  * </pre>
  * @param {object} event - событие
