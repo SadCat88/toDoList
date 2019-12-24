@@ -22,12 +22,13 @@ let $toDoButton = document.querySelector('.todo-add-task__button');
 let $toDoList = document.querySelector('.todo-list');
 
 let taskList = [];
+let important = false;
 
 $toDoButton.addEventListener('click', addToDo);
 // слушает событие - клик по кнопке
 
 /**
- * Обрабатывает ввод задачи
+ * Обрабатывает ввод новой задачи
  *
  * @deprecated <pre>
  * Создает объект с новой задачей:
@@ -41,40 +42,52 @@ function addToDo(event) {
   event.preventDefault();
   // отмена действия по умолчанию
 
-  let inputText = $toDoInput.value;
+  let $inputText = $toDoInput.value;
   // введенное пользователем значение
-  let inputLabel = document.querySelector('.todo-add-task__label');
+  let $inputLabel = document.querySelector('.todo-add-task__label');
   // подсказка для ввода
-  let taskExist = isExist(taskList, inputText);
+  let taskExist = isExist(taskList, $inputText);
   // такая задача уже существует?
 
   if (taskExist == true) {
-    inputLabel.innerHTML = 'Такая задача уже существует';
-    // вывод подсказки
+    // === вывод подсказки
+    $inputLabel.style.color = '#991050';
+    $inputLabel.innerHTML = 'Такое задание уже существует';
   }
 
-  if (inputText == '') {
-    inputLabel.innerHTML = 'Вы ввели пустое значение';
-    // вывод подсказки
+  if ($inputText == '') {
+    // === вывод подсказки
+    $inputLabel.style.color = '#991050';
+    $inputLabel.innerHTML = 'Вы ввели пустое значение';
   }
 
   // === добавляем только не пустое задание
-  if (inputText != '' && taskExist != true) {
+  if ($inputText != '' && taskExist != true) {
     // === новое задание
     let newToDo = {
       todo: $toDoInput.value,
       checked: false,
-      important: false
+      important: important
     };
 
-    inputLabel.innerHTML = 'Введите еще одну задачу:';
-    // вывод подсказки
+    // === добавление кнопки очистки
+    if (taskList.length === 0) {
+      let $btnClearTaskList = document.createElement('button');
+      $btnClearTaskList.className = 'button todo-list__clear-button';
+      $btnClearTaskList.innerHTML = 'Очистить список';
+      document.querySelector('.todo-panel').append($btnClearTaskList);
+    }
+
+    //=== вывод подсказки
+    $inputLabel.style.color = '#001e4a';
+    $inputLabel.innerHTML = 'Введите еще одну задачу:';
 
     taskList.push(newToDo);
     // добавить новое задание в массив заданий
     displayNewToDoIntoList(taskList);
     // вывести новое задание на экран}
   }
+  console.log(taskList);
 }
 
 /**
@@ -107,7 +120,7 @@ const isExist = (arr, str) => {
  */
 function displayNewToDoIntoList(arr) {
   $toDoList.innerHTML = '';
-  //очистка списка
+  //очистка списка на экране
 
   // === перебор всех заданий из массива
   for (let i = 0; i < arr.length; i++) {
@@ -122,10 +135,15 @@ function displayNewToDoIntoList(arr) {
       checked = 'checked';
     }
 
+    let importantClass = '';
+    if (arr[i].important == true) {
+      importantClass = ' todo-list__item-label_red';
+    }
+
     //=== добавить новому элементу содержание
     $task.innerHTML = `
-      <input class="todo-list__item-input" type="checkbox" data-id="${i}" id="task_${i}" ${checked}>
-      <label class="todo-list__item-label" for="task_${i}">${arr[i].todo}</label>
+    <input class="todo-list__item-input-completed" type="checkbox" data-id="${i}" id="task_${i}" ${checked}>
+    <label class="todo-list__item-label${importantClass}" for="task_${i}">${arr[i].todo}</label>
     `;
 
     $toDoList.append($task);
@@ -143,18 +161,19 @@ document.onclick = whereClick;
  * - Был ли клик на чекбоксе;
  * - Была снята или поставлена галочка;
  * - Если галочка поставлена, записать в массив с задачами в нужный объект
- * свойство checked = true;
+ * нужное свойство checked или important;
  * </pre>
  * @param {object} event - событие
  */
 function whereClick(event) {
-  let target = event.target;
+  let $target = event.target;
   // цель события
-  if (target.classList.contains('todo-list__item-input')) {
-    // если цель события - input  с нужным классом
-    let id = target.dataset.id;
+
+  // === если цель события - checkbox - флаг выполнения задачи
+  if ($target.classList.contains('todo-list__item-input-completed')) {
+    let id = $target.dataset.id;
     // считаем атрибут data-id
-    if (target.checked) {
+    if ($target.checked) {
       // если чекбокс в состоянии отмечен
       taskList[id].checked = true;
       // изменить в массиве задач для нужной задачи свойство checked = true
@@ -162,6 +181,17 @@ function whereClick(event) {
       // иначе
       taskList[id].checked = false;
       // изменить в массиве задач для нужной задачи свойство checked = false
+    }
+  }
+
+  // === если цель события - checkbox - флаг важности задачи
+  if ($target.classList.contains('important__checkbox')) {
+    if ($target.checked) {
+      // если чекбокс в состоянии отмечен
+      important = true;
+      // выставляем флаг - важное задание
+    } else {
+      important = false;
     }
   }
 }

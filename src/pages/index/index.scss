@@ -7,6 +7,8 @@
     background-color: $pageSecondBgColor;
     box-shadow: 0px 0px 10px 15px $pageSecondBgColor;
 
+    user-select: none;
+
     .header__heading {
         text-align: center;
         line-height: 10vh;
@@ -25,7 +27,7 @@
         box-shadow: 0px 0px 10px 15px $pageSecondBgColor;
     }
 
-    .todo-task {
+    .todo-add-task {
         display: flex;
         flex-direction: column;
         margin-bottom: 30px;
@@ -37,10 +39,11 @@
             font-size: 20px;
             line-height: 40px;
             color: $mainText;
+
+            user-select: none;
         }
 
         .todo-add-task__input {
-            margin-bottom: 0;
             margin-top: -10px;
             padding: 0 20px;
             height: 70px;
@@ -66,35 +69,36 @@
             }
         }
 
+        .important {
+            margin-bottom: 15px;
+            margin-left: 5px;
+            margin-top: -5px;
+
+            .important__checkbox {}
+
+            .important__label {}
+        }
+
         .todo-add-task__button {
+            margin-left: 10px;
+            margin-right: 10px;
             padding: 0 20px;
-            height: 70px;
+            height: 40px;
 
             font-size: 20px;
             line-height: 40px;
-            color: $mainText;
-
-            border: none;
-            border-radius: 5px;
-            background-color: darken($pageSecondBgColor, 10);
-            box-shadow: inset 0px 0px 5px 10px $pageSecondBgColor;
-
-            &:hover {
-                cursor: pointer;
-                background-color: darken($pageSecondBgColor, 15);
-                box-shadow: inset 0px 0px 5px 10px $pageSecondBgColor;
-            }
-
-            &:focus {
-                outline: none;
-            }
         }
+    }
+
+    .todo-heading {
+        user-select: none;
     }
 
     .todo-list {
 
-        .todo-list__item-input {
+        .todo-list__item-input-completed {
             float: left;
+            margin-top: 8px;
 
             &:hover {
                 cursor: pointer;
@@ -104,10 +108,25 @@
 
     .todo-list__item-label {
         display: block;
+        padding: 5px 0;
+        border-radius: 5px;
+
+        user-select: none;
 
         &:hover {
             cursor: pointer;
+            background-color: darken($pageSecondBgColor, 5);
+            box-shadow: 0px 0px 5px 3px darken($pageSecondBgColor, 5);
         }
+
+        &.todo-list__item-label_red {
+            color: #991050;
+        }
+    }
+
+    .todo-list__clear-button {
+        margin-top: 15px;
+        float: right;
     }
 }
 
@@ -117,4 +136,26 @@
 
     background-color: $pageSecondBgColor;
     box-shadow: 0px 0px 10px 15px $pageSecondBgColor;
+
+    user-select: none;
+}
+
+.button {
+    border: none;
+    border-radius: 5px;
+
+    color: $mainText;
+
+    background-color: darken($pageSecondBgColor, 10);
+    box-shadow: 0px 0px 5px 3px darken($pageSecondBgColor, 10);
+
+    &:hover {
+        cursor: pointer;
+        background-color: darken($pageSecondBgColor, 15);
+        box-shadow: 0px 0px 5px 3px darken($pageSecondBgColor, 15);
+    }
+
+    &:focus {
+        outline: none;
+    }
 }

@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 html(lang="ru")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible" content="ie=edge")
-    title ToDoList
-  body
-    header.header
-      .wrapper
-        h1.header__heading ToDoList
-    main.main
-      .wrapper
-        .todo-panel
-          form.todo-task(action="")
-            label.todo-add-task__label(for="task") Введите задачу:
-            input.todo-add-task__input(type="text" id="task" placeholder = "Описание задачи")
-            button.todo-add-task__button Добавить задачу
-          p.todo-heading
-            b Список заданий:
-          ul.todo-list
-            li На данный момент заданий нет
-            //- li.todo-list__item
-            //-   input.todo-list__item-input(type="checkbox" data-id="0" checked)#task_X
-            //-   label.todo-list__item-label(for="task_X").
-            //-     test task
-    footer.footer
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible" content="ie=edge")
+        title ToDoList
+    body
+        header.header
+            .wrapper
+                h1.header__heading ToDoList
+        main.main
+            .wrapper
+                .todo-panel.clearfix
+                    form.todo-add-task(action="")
+                        label.todo-add-task__label(for="task") Введите задачу:
+                        input.todo-add-task__input(type="text" placeholder = "Описание задачи")#task
+                        .important.horizontal-w
+                            input.important__checkbox(type="checkbox")#important
+                            label.important__label(for="important") Важная задача
+                        button.button.todo-add-task__button Добавить задачу
+                    p.todo-heading
+                        b Список заданий:
+                    ul.todo-list
+                        li На данный момент заданий нет
+                    //-     li.todo-list__item
+                    //-       input.todo-list__item-input-completed(type="checkbox" data-id="0" checked)#task_X
+                    //-       label.todo-list__item-label.todo-list__item-label_red(for="task_X").
+                    //-         test task
+                    //- button.button.todo-list__clear-button Очистить список
+        footer.footer

@@ -14,3 +14,9 @@
     box-sizing: border-box;
 }
 
+// распорка
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
