@@ -159,9 +159,10 @@ document.onclick = whereClick;
  * @deprecated <pre>
  * Логика:
  * - Был ли клик на чекбоксе;
- * - Была снята или поставлена галочка;
- * - Если галочка поставлена, записать в массив с задачами в нужный объект
+ *   - Была снята или поставлена галочка;
+ *   - Если галочка поставлена, записать в массив с задачами в нужный объект
  * нужное свойство checked или important;
+ * - Если клик на кнопке очистки списка, очистить список.
  * </pre>
  * @param {object} event - событие
  */
@@ -193,5 +194,18 @@ function whereClick(event) {
     } else {
       important = false;
     }
+  }
+
+  // === если цель события - кнопка - очистка списка
+  if ($target.classList.contains('todo-list__clear-button')) {
+    // === удаление кнопки из DOM
+    let $btnClearTaskList = document.querySelector('.todo-list__clear-button');
+    $btnClearTaskList.remove();
+
+    // === очистка массива
+    taskList = [];
+
+    // === очистка списка в DOM
+    $toDoList.innerHTML = '<li> На данный момент заданий нет</li>';
   }
 }

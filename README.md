@@ -1,7 +1,7 @@
 # ToDoList
 
 **GitHub Pages:**<br>
-https://sadcat88.github.io/toDoList/prod/<br>
+https://sadcat88.github.io/toDoList/prod/index.html<br>
 
 ## Описание
 
